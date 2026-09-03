@@ -73,7 +73,7 @@ if (lightbox) {
   const closeLightbox = () => {
     if (typeof lightbox.close === 'function') lightbox.close();
     else lightbox.removeAttribute('open');
-    lightboxImage.src = '';
+    lightboxImage.removeAttribute('src');
   };
 
   closeButton.addEventListener('click', closeLightbox);
@@ -81,4 +81,3 @@ if (lightbox) {
     if (event.target === lightbox) closeLightbox();
   });
 }
-
