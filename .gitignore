@@ -2,4 +2,19 @@ node_modules/
 dist/
 *.tgz
 .DS_Store
+Thumbs.db
+
+# Lokalne nadpisania zmiennych środowiskowych — mogą zawierać dane,
+# których nie powinno się commitować (np. lokalne klucze API).
+# Sam plik .env (bez sekretów, tylko VITE_SITE_URL) jest commitowany celowo.
+.env.local
+.env.*.local
+
+# Metadane starej platformy hostingowej (OpenAI Sites) — nieużywane
+# po przejściu na standardowy hosting statyczny.
+.openai/
+
+# Edytory / IDE
+.vscode/
+.idea/
 

@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://kw-meble.bogdanfedik92.chatgpt.site/sitemap.xml

@@ -1,0 +1,24 @@
+# Nagłówki bezpieczeństwa HTTP dla Netlify i Cloudflare Pages
+# (oba hostingi czytają plik `_headers` z katalogu publikowanego —
+# Vite kopiuje go automatycznie z public/ do dist/).
+#
+# Lista dozwolonych zewnętrznych zasobów w CSP odzwierciedla to,
+# co witryna faktycznie ładuje: zdjęcia z images.unsplash.com.
+# Czcionka Inter jest hostowana lokalnie (public/fonts), więc CSP
+# nie musi już zezwalać na fonts.googleapis.com / fonts.gstatic.com —
+# przeglądarka odwiedzającego nie łączy się z serwerami Google.
+# Witryna nie ma żadnego backendu, formularzy ani skryptów innych firm.
+#
+# style-src zawiera 'unsafe-inline', ponieważ kilka sekcji używa
+# atrybutu style="--zmienna:..." do ustawienia koloru próbki dekoru
+# i tła sekcji-hero na podstawach usług. Te wartości są na stałe
+# wpisane w kodzie (nie pochodzą od użytkownika), więc ryzyko jest
+# znikome — a przepisanie tego na osobne klasy CSS nie zmieniłoby
+# niczego wizualnie, tylko zwiększyłoby liczbę plików do utrzymania.
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' https://images.unsplash.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
